@@ -35,19 +35,18 @@ public class OTJSender {
     private static HttpURLConnection getHttpURLConnection(String cookie, OTJEntry entry) throws URISyntaxException, IOException {
         HttpURLConnection conn = getUrlConnection(cookie);
 
-        // Form data to send
-        String urlEncodedForm = entry.toString();
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(entry);
 
-        // Write data to the request body
         try (OutputStream os = conn.getOutputStream()) {
-            byte[] input = urlEncodedForm.getBytes(StandardCharsets.UTF_8);
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
             os.write(input, 0, input.length);
         }
         return conn;
     }
 
     private static HttpURLConnection getUrlConnection(String cookie) throws URISyntaxException, IOException {
-        URI uri = new URI("https://www.smartassessor.co.uk/ETimeSheet/Form");
+        URI uri = new URI("https://education.oneadvanced.com/api/cloud-education/v1/learner/be605ce9-44ff-439e-8d55-47a8637a0313/activity-log");
         URL url = uri.toURL();
 
         // Open connection
@@ -56,7 +55,7 @@ public class OTJSender {
         // Configure the connection for POST
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Cookie", cookie);
         return conn;
     }

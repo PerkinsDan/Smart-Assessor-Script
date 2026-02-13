@@ -17,7 +17,7 @@ public class CookieGrabber {
         System.setProperty("webdriver.gecko.driver", "/Users/danperkins/Downloads/geckodriver");
 
         driver = new FirefoxDriver();
-        driver.get("https://www.smartassessor.co.uk");
+        driver.get("https://education.oneadvanced.com/cloud-education-shared/home");
     }
 
     public String getCookie() {

@@ -4,56 +4,32 @@ import lombok.Getter;
 
 @Getter
 public class OTJEntry {
-    String Id = "0";
-    String DateCreated = "01/01/0001+00:00:00";
-    String OriginId = "Unknown";
-    String SessionLinkHasFeedback = "False";
-    String IsDfeFundingRuleDateToBeValidated = "False";
-    String ActivityImpactRequired = "True";
-    String hdnDfeFundingRuleDate = "01/08/2023";
-    String TimeWithAssessorId = "501133f8-46bf-4565-b6b1-82c4d038f437";
-    String OnTheJob = "1";
-    String IsAssessorApproved = "false";
-    String UnitId = "{ef974f73-5d9d-447e-8652-379ba9535229}";
-    String Date;
-    String ParentModuleId;
-    String TimeValue; // Time Spend on Activity
-    String ActivityStartTimeValue; // Start Time
-    String Comments;
-    String ParentActivityId; // Activity type
+    String unitId = "ef974f73-5d9d-447e-8652-379ba9535229";
+    String learnerId = "be605ce9-44ff-439e-8d55-47a8637a0313";
+    String activityDate;
+    String activityImpact;
+    int activityType = 13;
+    String activityTime; // Start time
+    int hours; // Duration
+    int minutes; // Duration
 
-    public OTJEntry(String date,
-                    String parentModuleId,
-                    String timeValue,
-                    String activityStartTimeValue,
-                    String parentActivityId,
-                    String comments) {
-        Date = date;
-        ParentModuleId = parentModuleId;
-        TimeValue = timeValue;
-        ActivityStartTimeValue = activityStartTimeValue;
-        ParentActivityId = parentActivityId;
-        Comments = comments;
+    public OTJEntry(String activityDate, String activityImpact, String activityTime, int hours, int minutes) {
+        this.activityDate = activityDate;
+        this.activityImpact = activityImpact;
+        this.activityTime = activityTime;
+        this.hours = hours;
+        this.minutes = minutes;
     }
 
     @Override
     public String toString() {
-        return "Id=" + Id +
-                "&DateCreated=" + DateCreated +
-                "&OriginId=" + OriginId +
-                "&SessionLinkHasFeedback=" + SessionLinkHasFeedback +
-                "&IsDfeFundingRuleDateToBeValidated=" + IsDfeFundingRuleDateToBeValidated +
-                "&ActivityImpactRequired=" + ActivityImpactRequired +
-                "&hdnDfeFundingRuleDate=" + hdnDfeFundingRuleDate +
-                "&ParentActivityId=" + ParentActivityId +
-                "&TimeWithAssessorId=" + TimeWithAssessorId +
-                "&OnTheJob=" + OnTheJob +
-                "&IsAssessorApproved=" + IsAssessorApproved +
-                "&UnitId=" + UnitId +
-                "&Date=" + Date +
-                "&ParentModuleId=" + ParentModuleId +
-                "&TimeValue=" + TimeValue +
-                "&ActivityStartTimeValue=" + ActivityStartTimeValue +
-                "&Comments=" + Comments;
+        return "unitId=" + unitId +
+                "&learnerId=" + learnerId +
+                "&activityDate=" + activityDate +
+                "&activityImpact=" + activityImpact +
+                "&activityType=" + activityType +
+                "&activityTime=" + activityTime +
+                "&hours=" + hours +
+                "&minutes=" + minutes;
     }
 }
